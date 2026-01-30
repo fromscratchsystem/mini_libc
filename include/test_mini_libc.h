@@ -1,0 +1,39 @@
+#ifndef _TEST_MINI_LIBC_H
+#define _TEST_MINI_LIBC_H
+#include "mini_libc.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+	int	test_mini_strlen_base(void);
+	void	test_mini_putstr_base(void);
+	void	test_mini_putendl_base(void);
+	int	test_mini_memcpy_base(void);
+	int	test_mini_memset_base(void);
+	int	test_mini_bzero_base(void);
+	int	test_mini_memmove_base(void);
+	int	test_mini_memcmp_base(void);
+	int	test_mini_memchr_base(void);
+	int	test_mini_isdigit_base(void);
+	int	test_mini_isalpha_base(void);
+	int	test_mini_isalnum_base(void);
+	int	test_mini_isspace_base(void);
+	int	test_mini_strcpy_base(void);
+	int	test_mini_strncpy_base(void);
+	int	test_mini_strcmp_base(void);
+	int	test_mini_strncmp_base(void);
+	int	test_mini_strchr_base(void);
+	int	test_mini_strrchr_base(void);
+	int	test_mini_strstr_base(void);
+	void	test_mini_print_memory_base(void);
+	int	test_mini_atoi_base(void);
+	int	test_mini_atol_base(void);
+	void	test_mini_putnbr_base(void);
+	int	test_mini_strdup_base(void);
+	int	test_mini_strndup_base(void);
+	int	test_mini_word_count_base(void);
+	int	test_mini_split_base(void);
+	int	test_mini_substr_base(void);
+	int	test_mini_strcat_base(void);
+	int	test_mini_strncat_base(void);
+#endif

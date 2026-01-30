@@ -1,0 +1,43 @@
+NAME = libminilibc.a
+
+SRC_DIR = src
+INC_DIR = include
+BUILD_DIR = build
+TEST_DIR = tests
+
+CFILES = $(shell find $(SRC_DIR) -name '*.c')
+OFILES_PREV = $(subst $(SRC_DIR),$(BUILD_DIR),$(CFILES))
+OFILES = $(subst .c,.o,$(OFILES_PREV))
+TEST_FILES = $(subst $(SRC_DIR)/,$(TEST_DIR)/test_, $(CFILES))
+OTEST_FILES_PREV = $(subst $(TEST_DIR),$(BUILD_DIR), $(TEST_FILES))
+OTEST_FILES = $(subst .c,.o,$(OTEST_FILES_PREV))
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -MMD -MP -Iinclude
+CTESTFLAGS = -lminilibc -L.
+TEST_MAIN = tests/main.c
+OTEST_MAIN_PREV = $(subst $(TEST_DIR),$(BUILD_DIR), $(TEST_MAIN))
+OTEST_MAIN = $(subst .c,.o,$(OTEST_MAIN_PREV))
+
+all: $(NAME)
+
+$(NAME): $(OFILES)
+	ar rcs $(NAME) $(OFILES)
+
+$(OFILES): $(CFILES)
+	mkdir -p $(BUILD_DIR)
+	$(CC) -c $< -o $@ $(CFLAGS)
+
+test: $(NAME) $(OTEST_FILES) $(OTEST_MAIN)
+	$(CC) -o test $(OTEST_MAIN) $(OTEST_FILES) $(CFLAGS) $(CTESTFLAGS)
+
+$(OTEST_MAIN): $(TEST_MAIN)
+	$(CC) -o $(OTEST_MAIN) -c $(TEST_MAIN) $(CFLAGS) $(CTESTFLAGS)
+
+$(OTEST_FILES): $(TEST_FILES)
+	mkdir -p $(BUILD_DIR)
+	$(CC) -c $< -o $@ $(CFLAGS) $(CTESTFLAGS)
+
+.PHONY: clean
+
+clean:
+	rm -r $(BUILD_DIR)
