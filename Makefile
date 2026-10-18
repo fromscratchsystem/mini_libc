@@ -11,11 +11,15 @@ OBJS		= $(patsubst $(SRC_DIR)%, $(OBJ_DIR)%, $(SRCS:.c=.o))
 
 RM		= rm -rf
 CC		= cc
-CFLAGS		= -Wall -Wextra -Werror -MMD -MP
+CFLAGS		= -Wall -Wextra -Werror -MMD -MP -g3
 CDEBUG		= -Wall -Wextra -Werror -g3
 IFLAGS		= -I$(INC_DIR) -I$(MINILIBC_DIR)/include
 LFLAGS		= -L$(MINILIBC_DIR) -lminilibc
 
+ifdef SAN
+	CFLAGS += -fsanitize=address,undefined -fno-omit-frame-pointer
+	LDFLAGS += -fsanitize=address,undefined
+endif
 
 all: $(NAME)
 

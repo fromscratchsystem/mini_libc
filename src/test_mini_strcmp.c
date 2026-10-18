@@ -17,12 +17,12 @@ int	test_mini_strcmp_base(void)
 	s2[19] = '\0';
 	if (strcmp(s1, s2) != mini_strcmp(s1, s2))
 	{
-		mini_putendl("s1");
-		mini_print_memory(s1, 20);
-		mini_putendl(NULL);
-		mini_putendl("s2");
-		mini_print_memory(s2, 20);
-		mini_putendl(NULL);
+		puterror("s1");
+		mini_print_memory_fd(2, s1, 20);
+		puterror(NULL);
+		puterror("s2");
+		mini_print_memory_fd(2, s2, 20);
+		puterror(NULL);
 		return (free(s1), free(s2), 1);
 	}
 	return (free(s1), free(s2), 0);

@@ -19,20 +19,20 @@ int	test_mini_strncat_base(void)
 	ptr_tested = strncat(tested, "Hello World!", 5);
 	if (strcmp(ptr_to_test, ptr_tested) != 0)
 	{
-		puts("strncat (null) \"Hello World!\" size 5 failed");
-		mini_print_clean_memory(ptr_to_test, 20, "to_test");
-		mini_print_clean_memory(ptr_tested, 20, "tested");
-		puts("need to match");
+		puterror("strncat (null) \"Hello World!\" size 5 failed");
+		mini_print_clean_memory_fd(2, ptr_to_test, 20, "to_test");
+		mini_print_clean_memory_fd(2, ptr_tested, 20, "tested");
+		puterror("need to match");
 		return (free(to_test), free(tested), 1);
 	}
 	ptr_to_test = mini_strncat(to_test, " World!", 6);
 	ptr_tested = strncat(tested, " World!", 6);
 	if (strcmp(ptr_to_test, ptr_tested) != 0)
 	{
-		puts("strncat \"Hello\" \" World!\" size 6 failed");
-		mini_print_clean_memory(ptr_to_test, 20, "to_test");
-		mini_print_clean_memory(ptr_tested, 20, "tested");
-		puts("need to match");
+		puterror("strncat \"Hello\" \" World!\" size 6 failed");
+		mini_print_clean_memory_fd(2, ptr_to_test, 20, "to_test");
+		mini_print_clean_memory_fd(2, ptr_tested, 20, "tested");
+		puterror("need to match");
 		return (free(to_test), free(tested), 1);
 	}
 	char dest[8] = "Hi";
@@ -40,9 +40,9 @@ int	test_mini_strncat_base(void)
 	char src[] = "A";
 	if (strcmp(mini_strncat(dest, src, 6), strncat(dest_tested, src, 6)))
 	{
-		puts("strncat when size > strlen(src) failed");
-		mini_print_clean_memory(dest, 8, "to_test");
-		mini_print_clean_memory(dest_tested, 8, "tested");
+		puterror("strncat when size > strlen(src) failed");
+		mini_print_clean_memory_fd(2, dest, 8, "to_test");
+		mini_print_clean_memory_fd(2, dest_tested, 8, "tested");
 		return (free(to_test), free(tested), 1);
 	}
 	return (free(to_test), free(tested), 0);

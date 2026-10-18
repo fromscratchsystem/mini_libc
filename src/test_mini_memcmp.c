@@ -17,8 +17,8 @@ int	test_mini_memcmp_base(void)
 	memset(s2, 'a', 10);
 	if (memcmp(s1, s2, 20) != mini_memcmp(s1, s2, 20))
 	{
-		printf("s1 = %s\ns2 = %s\n", s1, s2);
-		printf("memcmp(s1,s2,20) = %d\nmini_memcmp(s1,s2,20) = %d)",
+		dprintf(2, "s1 = %s\ns2 = %s\n", s1, s2);
+		dprintf(2, "memcmp(s1,s2,20) = %d\nmini_memcmp(s1,s2,20) = %d)",
 			memcmp(s1, s2, 20), mini_memcmp(s1, s2, 20));
 		return (free(s1), free(s2), 1);
 	}

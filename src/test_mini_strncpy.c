@@ -17,9 +17,9 @@ int	test_mini_strncpy_base(void)
 	strncpy(tested, "Hello", 20);
 	if (memcmp(to_test, tested, 20) != 0)
 	{
-		printf("tested = %s\n", tested);
-		printf("to_test = %s\n", to_test);
-		puts("Does not match");
+		dprintf(2, "tested = %s\n", tested);
+		dprintf(2, "to_test = %s\n", to_test);
+		puterror("Does not match");
 		return (free(to_test), free(tested), 1);
 	}
 	return (free(to_test), free(tested), 0);

@@ -14,11 +14,11 @@ int	test_mini_strrchr_base(void)
 	substr_tested = strrchr(str, 'r');
 	if (strcmp(substr_to_test, substr_tested) != 0)
 	{
-		puts("substr_tested != substr_to_test");
-		printf("strcmp(substr_to_test, substr_tested) = %d\n",
+		puterror("substr_tested != substr_to_test");
+		dprintf(2, "strcmp(substr_to_test, substr_tested) = %d\n",
 			strcmp(substr_to_test, substr_tested));
-		mini_print_clean_memory(substr_to_test, 20, "substr_to_test");
-		mini_print_clean_memory(substr_tested, 20, "substr_tested");
+		mini_print_clean_memory_fd(2, substr_to_test, 20, "substr_to_test");
+		mini_print_clean_memory_fd(2, substr_tested, 20, "substr_tested");
 		mini_putendl("memory does not matches");
 		return (free(str), 1);
 	}

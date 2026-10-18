@@ -1,116 +1,131 @@
 #include "test_mini_libc.h"
 #include <unistd.h>
 
+void	puterror(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	write(2, str, i);
+	write(2, "\n", 1);
+}
+
 int	main(void)
 {
 	if (test_mini_strlen_base() == 0)
 		puts("TEST strlen base OK");
 	else
-		puts("TEST strlen base KO");
+		puterror("TEST strlen base KO");
 	if (test_mini_memcpy_base() == 0)
 		puts("TEST memcpy base OK");
 	else
-		puts("TEST memcpy base KO");
+		puterror("TEST memcpy base KO");
 	if (test_mini_memset_base() == 0)
 		puts("TEST memset base OK");
 	else
-		puts("TEST memset base KO");
+		puterror("TEST memset base KO");
 	if (test_mini_bzero_base() == 0)
 		puts("TEST bzero base OK");
 	else
-		puts("TEST bzero base KO");
+		puterror("TEST bzero base KO");
 	if (test_mini_memmove_base() == 0)
 		puts("TEST memmove base OK");
 	else
-		puts("TEST memmove base KO");
+		puterror("TEST memmove base KO");
 	if (test_mini_memcmp_base() == 0)
 		puts("TEST memcmp base OK");
 	else
-		puts("TEST memcmp base KO");
+		puterror("TEST memcmp base KO");
 	if (test_mini_memchr_base() == 0)
 		puts("TEST memchr base OK");
 	else
-		puts("TEST memchr base KO");
+		puterror("TEST memchr base KO");
 	if (test_mini_isdigit_base() == 0)
 		puts("TEST isdigit base OK");
 	else
-		puts("TEST isdigit base KO");
+		puterror("TEST isdigit base KO");
 	if (test_mini_isalpha_base() == 0)
 		puts("TEST isalpha base OK");
 	else
-		puts("TEST isalpha base KO");
+		puterror("TEST isalpha base KO");
 	if (test_mini_isalnum_base() == 0)
 		puts("TEST isalnum base OK");
 	else
-		puts("TEST isalnum base KO");
+		puterror("TEST isalnum base KO");
 	if (test_mini_isspace_base() == 0)
 		puts("TEST isspace base OK");
 	else
-		puts("TEST isspace base KO");
+		puterror("TEST isspace base KO");
 	if (test_mini_strcpy_base() == 0)
 		puts("TEST strcpy base OK");
 	else
-		puts("TEST strcpy base KO");
+		puterror("TEST strcpy base KO");
 	if (test_mini_strncpy_base() == 0)
 		puts("TEST strncpy base OK");
 	else
-		puts("TEST strncpy base KO");
+		puterror("TEST strncpy base KO");
 	if (test_mini_strcmp_base() == 0)
 		puts("TEST strcmp base OK");
 	else
-		puts("TEST strcmp base KO");
+		puterror("TEST strcmp base KO");
 	if (test_mini_atoi_base() == 0)
 		puts("TEST atoi base OK");
 	else
-		puts("TEST atoi base KO");
+		puterror("TEST atoi base KO");
 	if (test_mini_atol_base() == 0)
 		puts("TEST atol base OK");
 	else
-		puts("TEST atol base KO");
+		puterror("TEST atol base KO");
 	if (test_mini_strncmp_base() == 0)
 		puts("TEST strncmp base OK");
 	else
-		puts("TEST strncmp base KO");
+		puterror("TEST strncmp base KO");
 	if (test_mini_strchr_base() == 0)
 		puts("TEST strchr base OK");
 	else
-		puts("TEST strchr base KO");
+		puterror("TEST strchr base KO");
 	if (test_mini_strrchr_base() == 0)
 		puts("TEST strrchr base OK");
 	else
-		puts("TEST strrchr base KO");
+		puterror("TEST strrchr base KO");
 	if (test_mini_strstr_base() == 0)
 		puts("TEST strstr base OK");
 	else
-		puts("TEST strstr base KO");
+		puterror("TEST strstr base KO");
 	if (test_mini_strdup_base() == 0)
 		puts("TEST strdup base OK");
 	else
-		puts("TEST strdup base KO");
+		puterror("TEST strdup base KO");
 	if (test_mini_strndup_base() == 0)
 		puts("TEST strndup base OK");
 	else
-		puts("TEST strndup base KO");
+		puterror("TEST strndup base KO");
 	if (test_mini_word_count_base() == 0)
 		puts("TEST word_count base OK");
 	else
-		puts("TEST word_count base KO");
+		puterror("TEST word_count base KO");
 	if (test_mini_substr_base() == 0)
 		puts("TEST substr base OK");
 	else
-		puts("TEST substr base KO");
+		puterror("TEST substr base KO");
 	if (test_mini_split_base() == 0)
 		puts("TEST split base OK");
 	else
-		puts("TEST split base KO");
+		puterror("TEST split base KO");
 	if (test_mini_strcat_base() == 0)
 		puts("TEST strcat base OK");
 	else
-		puts("TEST strcat base KO");
+		puterror("TEST strcat base KO");
 	if (test_mini_strncat_base() == 0)
 		puts("TEST strncat base OK");
 	else
-		puts("TEST strncat base KO");
+		puterror("TEST memccpy base KO");
+	if (test_mini_memccpy_base() == 0)
+		puts("TEST memccpy base OK");
+	else
+		puterror("TEST memccpy base KO");
 	test_mini_putstr_base();
 	test_mini_putendl_base();
 	test_mini_putnbr_base();

@@ -14,12 +14,12 @@ int	test_mini_memchr_base(void)
 	substr_tested = memchr(str, 'r', 20);
 	if (memcmp(substr_to_test, substr_tested, 11) != 0)
 	{
-		puts("substr_tested != substr_to_test");
-		printf("memcmp(substr_to_test, substr_tested, 11) = %d\n",
+		puterror("substr_tested != substr_to_test");
+		dprintf(2, "memcmp(substr_to_test, substr_tested, 11) = %d\n",
 			memcmp(substr_to_test, substr_tested, 11));
-		mini_print_clean_memory(substr_to_test, 20, "substr_to_test");
-		mini_print_clean_memory(substr_tested, 20, "substr_tested");
-		mini_putendl("memory does not matches");
+		mini_print_clean_memory_fd(2, substr_to_test, 20, "substr_to_test");
+		mini_print_clean_memory_fd(2, substr_tested, 20, "substr_tested");
+		puterror("memory does not matches");
 		return (free(str), 1);
 	}
 	return (free(str), 0);

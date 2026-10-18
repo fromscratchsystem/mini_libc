@@ -36,4 +36,6 @@
 	int	test_mini_substr_base(void);
 	int	test_mini_strcat_base(void);
 	int	test_mini_strncat_base(void);
+	int	test_mini_memccpy_base(void);
+	void	puterror(char *str);
 #endif

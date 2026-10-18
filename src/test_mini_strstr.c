@@ -14,20 +14,20 @@ int	test_mini_strstr_base(void)
 	substr_tested = strstr(str, "tr");
 	if (!substr_tested != !substr_to_test)
 	{
-		puts(str);
+		puterror(str);
 		if (!substr_tested)
-			puts("tr found but does not exists");
+			puterror("tr found but does not exists");
 		if (!substr_to_test)
-			puts("tr not found but exists");
+			puterror("tr not found but exists");
 	}
 	if (strcmp(substr_to_test, substr_tested) != 0)
 	{
-		puts("substr_tested != substr_to_test");
-		printf("strcmp(substr_to_test, substr_tested) = %d\n",
+		puterror("substr_tested != substr_to_test");
+		dprintf(2, "strcmp(substr_to_test, substr_tested) = %d\n",
 			strcmp(substr_to_test, substr_tested));
-		mini_print_clean_memory(substr_to_test, 5, "substr_to_test");
-		mini_print_clean_memory(substr_tested, 5, "substr_tested");
-		mini_putendl("memory does not matches");
+		mini_print_clean_memory_fd(2, substr_to_test, 5, "substr_to_test");
+		mini_print_clean_memory_fd(2, substr_tested, 5, "substr_tested");
+		puterror("memory does not matches");
 		return (free(str), 1);
 	}
 	return (free(str), 0);
